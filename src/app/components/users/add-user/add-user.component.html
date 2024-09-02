@@ -1,0 +1,110 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+                <div class="card-header">
+                    <h5>Add User</h5>
+                </div>
+                <div class="card-body tab2-card">
+                    <form class="form-horizontal" [formGroup]="addForm" (ngSubmit)="submitForm()">
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span>First Name :</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" formControlName="firstName"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['firstName'].errors }">
+                                    <div class="col-sm-2 invalid-feedback"
+                                        *ngIf="submitted && ctrl['firstName'].errors">
+                                        <div *ngIf="submitted && ctrl['firstName'].errors['required']">
+                                            First name is required</div>
+                                        <div *ngIf="submitted && ctrl['firstName'].errors['minlength']">
+                                            Minimum 3 characters are required</div>
+                                        <div *ngIf="submitted && ctrl['firstName'].errors['maxlength']">
+                                            Maximum 10 characters are allowed </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span>Last Name :</label>
+                                <div class="col-sm-7">
+                                    <input class="col-sm-7 form-control" type="text" formControlName="lastName"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['lastName'].errors }">
+                                    <div class="col-sm-2 invalid-feedback" *ngIf="submitted && ctrl['lastName'].errors">
+                                        <div *ngIf="submitted && ctrl['lastName'].errors['required']">
+                                            Last name is required</div>
+                                        <div *ngIf="submitted && ctrl['lastName'].errors['minlength']">
+                                            Minimum 3 characters are required</div>
+                                        <div *ngIf="submitted && ctrl['lastName'].errors['maxlength']">
+                                            Maximum 10 characters are allowed </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span>E-mail Address :</label>
+                                <div class="col-sm-7">
+                                    <input class=" form-control" type="email" formControlName="email"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['email'].errors }">
+                                    <div class="col-sm-2 invalid-feedback" *ngIf="submitted && ctrl['email'].errors">
+                                        <div *ngIf="submitted && ctrl['email'].errors['required']">
+                                            E-mail is required</div>
+                                        <div *ngIf="submitted && ctrl['email'].errors['pattern']">
+                                            Enter a valid Email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span>User Type : </label>
+                                <div class="col-sm-7">
+                                    <select class=" form-control" formControlName="userTypeId"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['userTypeId'].errors }">
+                                        <option value="">--Select User Type--</option>
+                                        <option *ngFor="let type of objUserTypes" [value]="type.id">{{type.name}}
+                                        </option>
+                                    </select>
+                                    <div class="col-sm-2 invalid-feedback"
+                                        *ngIf="submitted && ctrl['userTypeId'].errors">
+                                        <div *ngIf="submitted && ctrl['userTypeId'].errors['required']">
+                                            User Type is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span> New Password : </label>
+                                <div class="col-sm-7">
+                                    <input class="form-control " type="password" formControlName="password"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['password'].errors }">
+                                    <div class="col-sm-2 invalid-feedback" *ngIf="submitted && ctrl['password'].errors">
+                                        <div *ngIf="submitted && ctrl['password'].errors['required']">
+                                            Password is required</div>
+                                        <div *ngIf="submitted && ctrl['password'].errors['pattern']">
+                                            Minimum 8 characters are required <br> lowercase, uppercase,
+                                            numbers and special characters</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label"><span>*</span>Confirm Password :</label>
+                                <div class="col-sm-7">
+                                    <input class="col-sm-7 form-control" type="password"
+                                        formControlName="confirmPassword"
+                                        [ngClass]="{'is-invalid' : submitted && ctrl['confirmPassword'].errors }">
+                                    <div class="col-sm-2 invalid-feedback"
+                                        *ngIf="submitted && ctrl['confirmPassword'].errors">
+                                        <div *ngIf="submitted && ctrl['confirmPassword'].errors['required']">
+                                            Re-enter the password</div>
+                                        <div *ngIf="submitted && ctrl['confirmPassword'].errors['mustMatch']">
+                                            Password is not matching with new password</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" form-button pull-right mt-2">
+                                <button type="submit" class="btn btn-primary">{{buttonText}}</button>
+                                <button type="button" (click)="cancelForm()" class="btn btn-danger mx-2">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

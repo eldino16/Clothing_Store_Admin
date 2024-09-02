@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>User List</h5>
+        </div>
+        <div class="card-body">
+            <div class="btn-popup" style="display: flex; justify-content: flex-end">
+                <a class="btn btn-secondary" routerLink="/users/add-user">Add User</a>
+            </div>
+            <div class="custom-datatable">
+                <ngx-datatable class="bootstrap" [rows]="objRows" [columnMode]="'force'" [headerHeight]="50"
+                    [footerHeight]="50" [rowHeight]="'auto'" [limit]="5">
+                    <ngx-datatable-column name="First Name" prop="firstName"></ngx-datatable-column>
+                    <ngx-datatable-column name="Last Name" prop="lastName"></ngx-datatable-column>
+                    <ngx-datatable-column name="E-mail Address" prop="email"></ngx-datatable-column>
+                    <ngx-datatable-column name="User Type" prop="userType"></ngx-datatable-column>
+                    <ngx-datatable-column name="Created On" prop="createdOn"></ngx-datatable-column>
+                    <ngx-datatable-column name="Actions">
+                        <ng-template ngx-datatable-cell-template let-row="row">
+                            <button type="button" class="fa fa-edit mx-2" (click)="editRecord(row.id)"></button>
+                            <button type="button" class="fa fa-trash-o" (click)="deleteRecord(row.id)"></button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+</div>

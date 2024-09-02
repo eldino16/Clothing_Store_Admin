@@ -1,0 +1,137 @@
+<div class="page-wrapper">
+    <div class="authentication-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-0 card-right">
+                    <div class="card tab2-card">
+                        <div class="card-body">
+                            <div class="tab-content" id="top-tabContent">
+                                <ul ngbNav #nav="ngbNav" class="nav nav-tabs nav-material" activeId="loginTab">
+                                    <li ngbNavItem="loginTab">
+                                        <a ngbNavLink><i class="fa fa-unlock"></i> Login</a>
+                                        <ng-template ngbNavContent>
+                                            <!--login form start -->
+                                            <form class="form-horizontal auth-form" [formGroup]="loginForm"
+                                                (ngSubmit)="login()">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Username"
+                                                        formControlName="userName">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Password"
+                                                        formControlName="password">
+                                                </div>
+                                                <div class="form-button">
+                                                    <button class="btn btn-primary" type="submit">Login</button>
+                                                </div>
+                                            </form>
+                                            <!--login form end -->
+                                        </ng-template>
+                                    </li>
+                                    <li ngbNavItem="registertab">
+                                        <a ngbNavLink><i class="fa fa-user"></i> Registration</a>
+                                        <ng-template ngbNavContent>
+                                            <!--registration form start -->
+                                            <form class="form-horizontal auth-form" [formGroup]="registerForm"
+                                                (ngSubmit)="register(registerForm)">
+                                                <div class="form-group row">
+                                                    <label><span>*</span>First Name</label>
+                                                    <input class="form-control" type="text" formControlName="firstName"
+                                                        [ngClass]="{'is-invalid' : submitted && registrationCtrl['firstName'].errors }">
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="submitted && registrationCtrl['firstName'].errors">
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['firstName'].errors['required']">
+                                                            First name is required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['firstName'].errors['minlength']">
+                                                            Minimum 3 characters are required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['firstName'].errors['maxlength']">
+                                                            Maximum 10 characters are allowed </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label><span>*</span>Last
+                                                        Name</label>
+                                                    <input class="form-control" type="text" formControlName="lastName"
+                                                        [ngClass]="{'is-invalid' : submitted && registrationCtrl['lastName'].errors }">
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="submitted && registrationCtrl['lastName'].errors">
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['lastName'].errors['required']">
+                                                            Last name is required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['lastName'].errors['minlength']">
+                                                            Minimum 3 characters are required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['lastName'].errors['maxlength']">
+                                                            Maximum 10 characters are allowed </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label><span>*</span>E-mail Address
+                                                    </label>
+                                                    <input class="form-control" type="email" formControlName="email"
+                                                        [ngClass]="{'is-invalid' : submitted && registrationCtrl['email'].errors }">
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="submitted && registrationCtrl['email'].errors">
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['email'].errors['required']">
+                                                            E-mail is required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['email'].errors['pattern']">
+                                                            Enter a valid Email address</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label><span>*</span> New Password
+                                                    </label>
+                                                    <input class="form-control " type="password"
+                                                        formControlName="password"
+                                                        [ngClass]="{'is-invalid' : submitted && registrationCtrl['password'].errors }">
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="submitted && registrationCtrl['password'].errors">
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['password'].errors['required']">
+                                                            Password is required</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['password'].errors['pattern']">
+                                                            Minimum 8 characters are required <br> lowercase, uppercase,
+                                                            numbers and special characters</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-xl-3 colmd-4"><span>*</span>Confirm Password
+                                                    </label>
+                                                    <input class="form-control col-xl-8 col-md-7" type="password"
+                                                        formControlName="confirmPassword"
+                                                        [ngClass]="{'is-invalid' : submitted && registrationCtrl['confirmPassword'].errors }">
+                                                    <div class="col-xl-3 col-md-4"></div>
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="submitted && registrationCtrl['confirmPassword'].errors">
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['confirmPassword'].errors['required']">
+                                                            Re-enter the password</div>
+                                                        <div
+                                                            *ngIf="submitted && registrationCtrl['confirmPassword'].errors['mustMatch']">
+                                                            Password is not matching with new password</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-button">
+                                                    <button class="btn btn-primary" type="submit">Register</button>
+                                                </div>
+                                            </form>
+                                            <!--registration form end -->
+                                        </ng-template>
+                                    </li>
+                                </ul>
+                                <div [ngbNavOutlet]="nav"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

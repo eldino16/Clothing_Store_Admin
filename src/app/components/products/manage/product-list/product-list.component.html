@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>Products List</h5>
+        </div>
+        <div class="card-body">
+            <div class="btn-popup" style="display: flex; justify-content: flex-end">
+                <a class="btn btn-secondary" routerLink="/products/manage/add-product">Add Product</a>
+            </div>
+            <div class="custom-datatable">
+                <ngx-datatable class="bootstrap" [rows]="objRows" [columnMode]="'force'" [headerHeight]="50"
+                    [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
+                    <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column>
+                    <ngx-datatable-column name="Title" prop="title"></ngx-datatable-column>
+                    <ngx-datatable-column name="Code" prop="code"></ngx-datatable-column>
+                    <ngx-datatable-column name="Price" prop="price"></ngx-datatable-column>
+                    <ngx-datatable-column name="Sale Price" prop="salePrice"></ngx-datatable-column>
+                    <ngx-datatable-column name="Discount" prop="discount"></ngx-datatable-column>
+                    <ngx-datatable-column name="Quantity" prop="quantity"></ngx-datatable-column>
+                    <ngx-datatable-column name="Created On" prop="createdOn"></ngx-datatable-column>
+                    <ngx-datatable-column name="Actions">
+                        <ng-template ngx-datatable-cell-template let-row="row">
+                            <button type="button" class="fa fa-edit mx-2" (click)="editRecord(row.id)"></button>
+                            <button type="button" class="fa fa-trash-o" (click)="deleteRecord(row.id)"></button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+</div>
