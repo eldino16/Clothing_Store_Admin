@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
+    NgbModule
   ],
 })
-export class AuthModule {}
+export class AuthModule { }
